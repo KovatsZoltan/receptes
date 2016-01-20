@@ -1,4 +1,5 @@
 /* jshint node: true */
+session: 'session:custom',
 
 module.exports = function(environment) {
   var ENV = {
@@ -42,6 +43,22 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+  
+    ENV['simple-auth'] = {
+    store: 'simple-auth-session-store:local-storage',
+    crossOriginWhitelist: ['https://api-kovatszoltan.c9users.io'],
+    routeAfterAuthentication: '/'
+  }
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self' 'unsafe-eval' https://fonts.gstatic.com",
+    'connect-src': "'self' 'unsafe-eval' https://api-kovatszoltan.c9users.io",
+    'img-src': "'self'",
+    'style-src': "'self' 'unsafe-eval' https://fonts.googleapis.com",
+    'media-src': "'self'"
+  };
 
   return ENV;
 };

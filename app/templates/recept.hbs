@@ -1,0 +1,66 @@
+<h2>Recept</h2>
+<h4>{{model.nev}}</h4>
+<p>Nehézségi szint: {{model.nehezsegiszint}}</p>
+<table class="table table-striped">
+	<colgroup>
+	  <col class="col-md-3">
+	  <col class="col-md-1">
+  	</colgroup>
+{{#each model.hozzavalok as |hozzavalo|}}
+<tr><th>{{hozzavalo.nev}}</th>
+<td>{{hozzavalo.mennyiseg}}</td>
+<td>{{hozzavalo.mertekegyseg}}</td></tr>
+{{/each}}
+</table>
+<hr>
+
+<h2>Szerkesztés</h2>
+ <div class="col-xs-4">
+<p>Név:{{input value=model.nev class="form-control "}}</p>
+<p>Nehézség:{{input value=model.nehezsegiszint class="form-control "}}</p>
+</div>
+<div style="clear:both;"></div>
+<div>
+<p>Hozzávalók:</p>
+<table class="table table-striped">
+	<colgroup>
+      <col class="col-md-3">
+      <col class="col-md-1">
+      <col class="col-md-1">
+  	</colgroup>
+{{#each model.hozzavalok as |hozzavalo|}}
+<tr><th>{{input value = hozzavalo.nev class="form-control"}}</th>
+<td>{{input value = hozzavalo.mennyiseg class="form-control"}}</td>
+<td>{{input value = hozzavalo.mertekegyseg class="form-control"}}</td>
+<td><button class="btn btn-danger" 
+	    {{action "delete" hozzavalo.id}}>
+	X</button></td></tr>
+{{/each}}
+</table>
+<button class="btn btn-success" 
+	{{action "saveEdit"}}>
+Mentés
+</button>
+</div>
+<hr>
+
+<h2> Új hozzávaló felvétele</h2>
+<div class="col-xs-4">
+<p>Neve: {{input value=ujHozzavaloNev class="form-control"}}</p>
+<p>Mennyiség: {{input value=ujHozzavaloDarab class="form-control" type="number"}}</p>
+<p>Mértékegység: {{input value=ujHozzavaloMertekegyseg class="form-control"}}</p>
+</div>
+<div style="clear:both;"></div>
+<div>
+	<button class="btn btn-warning"
+		{{action "addNew"}}>
+	Hozzáad
+	</button>
+</div>
+<center>
+	{{#link-to "listaz"}}
+	  Vissza a listázó oldalra!
+	{{/link-to}}
+</center>
+
+{{outlet}}

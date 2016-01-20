@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('new');
+  this.route('recept', {path: '/recept/:receptid'});
+  this.route('listaz');
 });
 
 export default Router;

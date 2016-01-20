@@ -1,0 +1,34 @@
+<h1>Receptek</h1>
+
+<table class="table table-striped table-hover">
+  <colgroup>
+      <col class="col-md-3">
+      <col class="col-md-1">
+      
+  </colgroup>
+  {{#each model as |recept|}}
+    <tr><th>{{recept.nev}}</th>
+    <td>{{#link-to "recept" recept.id}}
+        <button class="btn btn-primary">Megnéz</button>
+        {{/link-to}}
+    </td>
+    <td>
+        <button class="btn btn-danger"  {{action "delete" recept.id}}>Töröl</button>
+    </td> </tr>
+    
+  {{/each}}
+</table>
+
+<p>
+{{#link-to "new"}}
+Új hozzáadása
+{{/link-to}}
+</p>
+
+<p>
+{{#link-to "index"}}
+Vissza a főoldalra
+{{/link-to}}
+</p>
+
+{{outlet}}
