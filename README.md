@@ -58,6 +58,9 @@ Egy recept hozzávalójának hozzáadásának pontos menete:
   - /recept/{id}
   - /listaz
   - /new
+### Oldal Sablon
+![Sablon](public/listaz.png)
+![Sablon2](public/recept.png)
 
 ### Felhasználói felület:
 ![Kinézet](public/fooldal.png)
